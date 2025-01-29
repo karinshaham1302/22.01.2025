@@ -37,9 +37,10 @@ WHERE courses.course_name IS NULL;
 
 
 f.
-SELECT lecturers.*, courses.course_name
-FROM lecturers
-INNER JOIN courses ON lecturers.lecturer_id = courses.lecturer_id;
+SELECT *
+FROM lecturers l
+LEFT JOIN courses c
+ON c.lecturer_id = l.lecturer_id;
 
 
 g.
