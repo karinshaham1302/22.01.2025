@@ -1,9 +1,9 @@
 a.
-SELECT courses.course_id, courses.course_name,
-    lecturers.first_name AS lecturer_first_name,
-    lecturers.last_name AS lecturer_last_name
-FROM courses
-INNER JOIN lecturers ON courses.lecturer_id = lecturers.lecturer_id;
+SELECT c.course_id, c.course_name,
+    l.first_name AS lecturer_first_name,
+    l.last_name AS lecturer_last_name
+FROM courses c
+INNER JOIN lecturers l ON c.lecturer_id = l.lecturer_id;
 
 
 b.
@@ -13,27 +13,27 @@ WHERE lecturer_id IS NULL;
 
 
 c.
-SELECT courses.course_id, courses.course_name,
-    lecturers.first_name AS lecturer_first_name,
-    lecturers.last_name AS lecturer_last_name
-FROM courses
-LEFT JOIN lecturers ON courses.lecturer_id = lecturers.lecturer_id;
+SELECT c.course_id, c.course_name,
+    l.first_name AS lecturer_first_name,
+    l.last_name AS lecturer_last_name
+FROM courses c
+LEFT JOIN lecturers l ON c.lecturer_id = l.lecturer_id;
 
 
 d.
-SELECT lecturers.lecturer_id,
-    lecturers.first_name AS lecturer_first_name,
-    lecturers.last_name AS lecturer_last_name,
-    courses.course_name
-FROM lecturers
-INNER JOIN courses ON lecturers.lecturer_id = courses.lecturer_id;
+SELECT l.lecturer_id,
+    l.first_name AS lecturer_first_name,
+    l.last_name AS lecturer_last_name,
+    c.course_name
+FROM lecturers l
+INNER JOIN courses c ON l.lecturer_id = c.lecturer_id;
 
 
 e.
 SELECT lecturers.*
-FROM lecturers
-LEFT JOIN courses ON lecturers.lecturer_id = courses.lecturer_id
-WHERE courses.course_name IS NULL;
+FROM lecturers l
+LEFT JOIN courses c ON l.lecturer_id = c.lecturer_id
+WHERE c.course_name IS NULL;
 
 
 f.
@@ -46,16 +46,16 @@ ORDER BY l.lecturer_id;
 
 
 g.
-SELECT courses.course_name,
-    lecturers.first_name AS lecturer_first_name,
-    lecturers.last_name AS lecturer_last_name
-FROM courses
-FULL JOIN lecturers ON courses.lecturer_id = lecturers.lecturer_id;
+SELECT c.course_name,
+    l.first_name AS lecturer_first_name,
+    l.last_name AS lecturer_last_name
+FROM courses c
+FULL JOIN lecturers l ON c.lecturer_id = l.lecturer_id;
 
 
 h.
-SELECT lecturers.first_name AS lecturer_first_name,
-    lecturers.last_name AS lecturer_last_name,
+SELECT l.first_name AS lecturer_first_name,
+    l.last_name AS lecturer_last_name,
     courses.course_name
-FROM lecturers
+FROM lecturers l
 CROSS JOIN courses;
