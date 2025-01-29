@@ -37,10 +37,12 @@ WHERE courses.course_name IS NULL;
 
 
 f.
-SELECT *
+SELECT l.lecturer_id, l.first_name,
+    l.last_name, l.email,
+    c.course_name
 FROM lecturers l
-LEFT JOIN courses c
-ON c.lecturer_id = l.lecturer_id;
+LEFT JOIN courses c ON l.lecturer_id = c.lecturer_id
+ORDER BY l.lecturer_id;
 
 
 g.
